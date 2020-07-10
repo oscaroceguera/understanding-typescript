@@ -1,0 +1,12 @@
+import express, { Request, Response } from 'express'
+import {urlencoded } from 'body-parser'
+import {router} from './routes/loginRouter'
+
+const app = express()
+
+app.use(urlencoded({ extended: true }))
+app.use(router)
+
+app.listen(3000, () => {
+  console.log('Listening on port 3000')
+})

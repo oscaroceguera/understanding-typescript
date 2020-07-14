@@ -1,13 +1,12 @@
-import {Todo, FetchTodosAction} from '../actions'
-import {ActionsTypes} from '../actions/types'
+import { Todo, Action, ActionsTypes} from '../actions'
 
-export const todosReducer = (
-  state: Todo[] = [],
-  action: FetchTodosAction
-) => {
+
+export const todosReducer = (state: Todo[] = [], action: Action) => {
   switch(action.type) {
     case ActionsTypes.fetchTodos:
       return action.payload
+    case ActionsTypes.deleteTodo:
+      return state.filter((todo: Todo) => todo.id !== action.payload)
     default:
       return state;
   }
